@@ -3,17 +3,14 @@ import homeImg from "../assets/gallery-cafe-interior.webp";
 const Home = () => {
   return (
     <div className="w-full h-[calc(100vh-80px)] relative">
-      {/* Background Image */}
       <img
         src={homeImg}
         alt="homeImage"
         className="w-full h-full object-cover"
       />
 
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Centered Hero Text */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
         <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
           Welcome to Café Fausse
@@ -26,7 +23,6 @@ const Home = () => {
         </button>
       </div>
 
-      {/* Visit Us Section Overlaid at Bottom */}
       <div className="absolute bottom-0 w-full flex items-center justify-center px-6 pb-6">
         <div className="bg-white/90 backdrop-blur-md shadow-md rounded-2xl p-6 w-full max-w-2xl">
           <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-black">
