@@ -1,4 +1,5 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
+import axios from "axios";
 
 type FormData = {
   date: string;
@@ -8,6 +9,7 @@ type FormData = {
   email: string;
   phone?: string;
 };
+
 const Reservations = () => {
   const {
     register,
@@ -16,9 +18,34 @@ const Reservations = () => {
     reset,
   } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = data => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<FormData> = async data => {
+    try {
+      // Combine date and time into ISO string
+      const time_slot = new Date(`${data.date}T${data.time}`).toISOString();
+
+      const payload = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        time_slot,
+        // guests is optional in your backend, include if needed
+      };
+
+      const res = await axios.post(
+        "http://localhost:5000/api/reservations",
+        payload
+      );
+
+      alert(
+        `Reservation confirmed!\nTable: ${res.data.table_number}\nTime: ${res.data.time_slot}`
+      );
+
+      reset();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      console.error(err);
+      alert(err.response?.data?.error || "Something went wrong");
+    }
   };
 
   return (
@@ -31,6 +58,7 @@ const Reservations = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-xl bg-white shadow-md rounded-2xl p-8 flex flex-col gap-6"
       >
+        {/* Date */}
         <div className="flex flex-col">
           <label className="text-sm font-medium mb-1">Date</label>
           <input
@@ -43,6 +71,7 @@ const Reservations = () => {
           )}
         </div>
 
+        {/* Time */}
         <div className="flex flex-col">
           <label className="text-sm font-medium mb-1">Time Slot</label>
           <input
@@ -55,6 +84,7 @@ const Reservations = () => {
           )}
         </div>
 
+        {/* Guests */}
         <div className="flex flex-col">
           <label className="text-sm font-medium mb-1">Number of Guests</label>
           <input
@@ -70,6 +100,7 @@ const Reservations = () => {
           )}
         </div>
 
+        {/* Name */}
         <div className="flex flex-col">
           <label className="text-sm font-medium mb-1">Customer Name</label>
           <input
@@ -83,6 +114,7 @@ const Reservations = () => {
           )}
         </div>
 
+        {/* Email */}
         <div className="flex flex-col">
           <label className="text-sm font-medium mb-1">Email Address</label>
           <input
@@ -102,6 +134,7 @@ const Reservations = () => {
           )}
         </div>
 
+        {/* Phone */}
         <div className="flex flex-col">
           <label className="text-sm font-medium mb-1">
             Phone Number (Optional)

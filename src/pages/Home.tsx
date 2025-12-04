@@ -1,4 +1,5 @@
 import homeImg from "../assets/gallery-cafe-interior.webp";
+import Newsletter from "../components/Newsletter";
 
 const Home = () => {
   return (
@@ -59,16 +60,7 @@ const Home = () => {
           Get updates on exclusive offers, events, and new menu items!
         </p>
 
-        <form className="flex flex-col sm:flex-row gap-4 w-full max-w-xl justify-center">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="px-4 py-2 rounded w-full text-gray-900 border focus:outline-none"
-          />
-          <button className="btn btn-warning font-semibold text-white w-full sm:w-auto">
-            Subscribe
-          </button>
-        </form>
+        <Newsletter />
       </div>
     </>
   );
