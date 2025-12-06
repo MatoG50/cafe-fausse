@@ -1,5 +1,3 @@
-// Sample images
-
 import Lightbox from "../components/Lightbox";
 
 const Gallery = () => {
