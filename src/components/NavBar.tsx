@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
+
   const links = [
     { to: "/", label: "Home" },
     { to: "/menu", label: "Menu" },
@@ -16,6 +19,7 @@ const NavBar = () => {
           Café Fausse
         </div>
 
+        {/* Desktop Menu */}
         <div className="hidden md:flex gap-6 text-lg font-medium">
           {links.map(link => (
             <NavLink
@@ -35,8 +39,11 @@ const NavBar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle">
+        <div className="md:hidden relative">
+          <button
+            onClick={() => setOpen(!open)}
+            className="btn btn-ghost btn-circle"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -51,24 +58,27 @@ const NavBar = () => {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-white rounded-box w-56 mt-6"
-          >
-            {links.map(link => (
-              <li key={link.to}>
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) =>
-                    isActive ? "text-amber-600 font-semibold" : "text-gray-700"
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+          </button>
+
+          {open && (
+            <ul className="absolute right-0 mt-4 menu p-2 shadow bg-white rounded-box w-56">
+              {links.map(link => (
+                <li key={link.to}>
+                  <NavLink
+                    to={link.to}
+                    onClick={() => setOpen(false)} // 🔥 closes menu after click
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-amber-600 font-semibold"
+                        : "text-gray-700"
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </nav>
