@@ -54,7 +54,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-white rounded-box w-56 mt-2"
+            className="dropdown-content menu p-2 shadow bg-white rounded-box w-56 mt-6"
           >
             {links.map(link => (
               <li key={link.to}>

@@ -19,7 +19,7 @@ const Home = () => {
 
         {/* HERO TEXT */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold drop-shadow-lg text-center">
             Welcome to Café Fausse
           </h1>
 
