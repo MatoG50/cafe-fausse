@@ -1,14 +1,9 @@
-import { Outlet } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/NavBar";
+
+import Layout from "./pages/Layout";
 
 function App() {
-  return (
-    <div className="App">
-      <NavBar />
-      <Outlet />
-    </div>
-  );
+  return <Layout />;
 }
 
 export default App;
