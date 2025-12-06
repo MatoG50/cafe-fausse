@@ -13,12 +13,11 @@ const Newsletter = () => {
     reset,
   } = useForm<NewsletterForm>();
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const onSubmit: SubmitHandler<NewsletterForm> = async data => {
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/newsletter",
-        data
-      );
+      const res = await axios.post(`${apiUrl}/newsletter`, data);
       alert(res.data.message || "Subscribed successfully!");
       reset();
     } catch (err: unknown) {
