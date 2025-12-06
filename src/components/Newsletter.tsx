@@ -30,25 +30,32 @@ const Newsletter = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col sm:flex-row gap-4 w-full max-w-xl justify-center"
+      className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-xl"
     >
-      <input
-        type="email"
-        placeholder="Enter your email"
-        {...register("email", {
-          required: "Email is required",
-          pattern: {
-            value: /^\S+@\S+\.\S+$/,
-            message: "Enter a valid email",
-          },
-        })}
-        className="px-4 py-2 rounded w-full text-gray-900 border focus:outline-none"
-      />
-      {errors.email && (
-        <p className="text-red-500 text-sm">{errors.email.message}</p>
-      )}
+      <div className="w-full">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          {...register("email", {
+            required: "Email is required",
+            pattern: {
+              value: /^\S+@\S+\.\S+$/,
+              message: "Enter a valid email",
+            },
+          })}
+          className="px-4 py-2 rounded w-full text-gray-900 border focus:outline-none"
+        />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1 text-center">
+            {errors.email.message}
+          </p>
+        )}
+      </div>
 
-      <button className="btn btn-warning font-semibold text-white w-full sm:w-auto">
+      <button
+        type="submit"
+        className="btn btn-warning font-semibold text-white w-full sm:w-auto"
+      >
         Subscribe
       </button>
     </form>

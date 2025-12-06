@@ -20,7 +20,6 @@ const Reservations = () => {
 
   const onSubmit: SubmitHandler<FormData> = async data => {
     try {
-      // Combine date and time into ISO string
       const time_slot = new Date(`${data.date}T${data.time}`).toISOString();
 
       const payload = {
@@ -28,7 +27,6 @@ const Reservations = () => {
         email: data.email,
         phone: data.phone,
         time_slot,
-        // guests is optional in your backend, include if needed
       };
 
       const res = await axios.post(

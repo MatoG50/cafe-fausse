@@ -4,7 +4,6 @@ import founderMaria from "../assets/maria.png";
 const About = () => {
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 space-y-16">
-      {/* History / About Section */}
       <section className="text-center space-y-4">
         <h1 className="text-4xl font-bold">About Café Fausse</h1>
         <p className="text-lg text-gray-700">
@@ -15,14 +14,12 @@ const About = () => {
         </p>
       </section>
 
-      {/* Founders Section */}
       <section className="space-y-10">
         <h2 className="text-3xl font-semibold text-center mb-8">
           Meet Our Founders
         </h2>
 
         <div className="flex flex-col md:flex-row gap-10 items-center justify-center">
-          {/* Founder Antonio */}
           <div className="flex flex-col items-center text-center max-w-xs">
             <img
               src={founderAntonio}
@@ -37,7 +34,6 @@ const About = () => {
             </p>
           </div>
 
-          {/* Founder Maria */}
           <div className="flex flex-col items-center text-center max-w-xs">
             <img
               src={founderMaria}
@@ -54,7 +50,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values / Philosophy */}
       <section className="text-center space-y-4">
         <h2 className="text-3xl font-semibold">Our Commitment</h2>
         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
