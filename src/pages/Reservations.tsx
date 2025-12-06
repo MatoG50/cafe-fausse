@@ -29,10 +29,8 @@ const Reservations = () => {
         time_slot,
       };
 
-      const res = await axios.post(
-        "http://localhost:5000/api/reservations",
-        payload
-      );
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const res = await axios.post(`${apiUrl}/reservations`, payload);
 
       alert(
         `Reservation confirmed!\nTable: ${res.data.table_number}\nTime: ${res.data.time_slot}`
